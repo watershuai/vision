@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+</head>
+<body>
+<form action="/user/register" accept-charset="utf-8" method="post">
+    <div>
+        <label>类别</label><input type="status"
+                                class="text" id="status" placeholder="密码" required name="status"
+    ><br>
+    </div>
+    <div>
+            <label>用户名</label><input type="username" class="text" id="username"
+                                     placeholder="用户名" name="username" >
+    </div>
+    <div>
+        <label>密    码</label><input type="password"
+                                    class="text" id="password" placeholder="密码"  name="password"
+    ><br>
+    </div>
+
+    <div>
+        <label>token</label><input type="tokenId"
+                                   class="text" id="tokenId" placeholder="密码"  name="tokenId"
+    ><br>
+    </div>
+    <br>
+    <div>
+        <button type="reset" value="重置" id="reset">重置</button>
+        <button type="submit" value="登录" id="login">注册</button>
+
+    </div>
+</form>
+
+<form action="/config/updateFlag" accept-charset="utf-8" method="post">
+    <div>
+            <label>用户名</label><input type="text" class="text" id="username2"
+                                     placeholder="用户账号" name="userName" required tabindex="1">
+    </div>
+
+    <br>
+
+    <button type="submit" value="提交" id="login6">提交</button>
+
+    </div>
+</form>
+<br/>
+
+<form action="/user/doLogin" accept-charset="utf-8" method="post">
+    <div>
+            <label>用户名</label><input type="text" class="text" id="username9"
+                                     placeholder="用户账号" name="username" required tabindex="1">
+    </div>
+    <div>
+            <label>密码</label><input type="password" class="text" id="password8"
+                                    placeholder="用户账号" name="password" required tabindex="1">
+    </div>
+
+    <br>
+
+    <button type="submit" value="提交" id="login10">先进行登录</button>
+
+    </div>
+</form>
+
+
+<form action="/config/baseInsert" accept-charset="utf-8" method="post">
+    <div>
+        <label>手机号</label><input type="text" class="text" id="username3"
+                                 placeholder="用户账号" name="phone" >
+    </div>
+    <br>
+    <div>
+        <label>性别</label><input type="text" class="text" id="username4"
+                                placeholder="用户账号" name="Gender" >
+    </div>
+    <br>
+    <div>
+        <label>张三</label><input type="text" class="text" id="username5"
+                                placeholder="用户账号" name="studentName" >
+    </div>
+    <br>
+    <div>
+        <label>省</label><input type="text" class="text" id="username6"
+                               placeholder="用户账号" name="province" >
+    </div>
+    <br>
+    <div>
+        <label>检查时间</label><input type="text" class="text" id="username7"
+                                  placeholder="用户账号" name="checkTime" >
+    </div>
+    <br>
+    <div>
+        <label>医生手机号</label><input type="text" class="text" id="username8"
+                                   placeholder="用户账号" name="checkDoctorPhone" >
+    </div>
+    <br>
+
+
+
+
+    <button type="submit" value="提交" id="login7">提交</button>
+
+</form>
+
+
+=======================================================================
+<form action="/file/upload" id="batchAddInfo" method="post" enctype="multipart/form-data">
+    <div style="width:95%;height:250px;">
+        <fieldset>
+            <legend style="margin-bottom:10px;"><font color="red">批量新增</font></legend>
+            <table>
+                <tr><td><span>文件导入</span></td></tr>
+                <tr><td><input id="importFile" name="importFile" type="file" style="width:200px;"/></td></tr>
+                <tr><td><a href="javascript:void(0)" class="easyui-linkbutton" style="width:100px;" onclick="fileUpload()" iconCls="icon-reload">导入</a></td></tr>
+                <tr><td><a href="javascript:void(0)" class="easyui-linkbutton" style="width:100px;" onclick="downloadFile()" iconCls="icon-print">模板下载</a></td></tr>
+            </table>
+        </fieldset>
+    </div>
+    <button type="submit" value="提交" id="login8">导入文件</button>
+</form>
+<script>
+    function fileUpload(){
+        var importFile=$("#importFile").val();
+        var reg=".xlsx$";
+        var patrn=new RegExp(reg);
+        if(patrn.exec(importFile)){
+            //不做任何事
+        }else{
+            $.messager.alert("提示","请导入.xls形式的Excel!");
+            return false;
+        }
+
+        $("#batchAddInfo").form('submit',{
+            url:basepath+"file/upload",
+            onSubmit:function(){},
+            success:function(data){
+                data=eval('('+data+')');
+                var flag=data.flag;
+                if(flag){
+                    $("#batchDivDialog").window("close");
+                    $.messager.alert('提示',"批量新增成功！");
+                    searchInfo();
+                }else{
+                    $("#batchDivDialog").window("close");
+                    $.messager.alert('提示',"批量新增失败！");
+                    searchInfo();
+                }
+            }
+        });
+
+
+    }
+
+</script>
+
+
+</body>
+
+</html>

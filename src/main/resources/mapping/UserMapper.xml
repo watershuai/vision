@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.vision.student.dao.UserMapper" >
+    <resultMap id="BaseResultMap" type="com.vision.student.bean.User" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="userName" property="userName" jdbcType="VARCHAR" />
+        <result column="passWord" property="passWord" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+        <result column="flag" property="flag" jdbcType="INTEGER" />
+        <result column="remake" property="remake" jdbcType="VARCHAR" />
+        <result column="JobNumber" property="JobNumber" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+   id, userName, passWord,status,flag,remake
+  </sql>
+    <!--<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from texttable
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    &lt;!&ndash; 这个方法是我自己加的 &ndash;&gt;
+    <select id="selectAllUser" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from texttable
+    </select>-->
+    <select id="selectTokenId" resultType="java.lang.String">
+        select tokenId from token
+    </select>
+
+
+    <select id="findNameAndPsw" resultType="com.vision.student.bean.User" parameterType="com.vision.student.bean.User">
+        select * from user where userName = #{userName,jdbcType=VARCHAR} and passWord=#{passWord,jdbcType=VARCHAR} and flag=0
+    </select>
+
+    <select id="findName" resultType="com.vision.student.bean.User" parameterType="java.lang.String">
+        select * from user where userName = #{userName,jdbcType=VARCHAR}
+    </select>
+
+
+    <insert id="insert" parameterType="com.vision.student.bean.User" >
+    insert into texttable (id, name, age)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER})
+  </insert>
+
+    <select id="select" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from user
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <!--<insert id="insertSelective" parameterType="com.vision.student.bean.User" >
+        insert into user values
+    </insert>-->
+    <insert id="insertSelective" parameterType="com.vision.student.bean.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+        <if test="id != null">
+            id,
+        </if>
+        <if test="userName != null">
+            userName,
+        </if>
+        <if test="passWord != null">
+            passWord,
+        </if>
+        <if test="status != null">
+            status,
+        </if>
+        <if test="flag != null">
+            flag,
+        </if>
+        <if test="remake != null">
+            remake,
+        </if>
+        <if test="JobNumber != null">
+            JobNumber,
+        </if>
+        <if test="fileNumber != null">
+            fileNumber,
+        </if>
+        <if test="creatTime != null">
+            creatTime,
+        </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+        <if test="id != null">
+            #{id,jdbcType=BIGINT},
+        </if>
+        <if test="userName != null">
+            #{userName,jdbcType=VARCHAR},
+        </if>
+        <if test="passWord != null">
+            #{passWord,jdbcType=VARCHAR},
+        </if>
+        <if test="status != null">
+            #{status,jdbcType=VARCHAR},
+        </if>
+        <if test="flag != null">
+            #{flag,jdbcType=INTEGER},
+        </if>
+        <if test="remake != null">
+            #{remake,jdbcType=VARCHAR},
+        </if>
+        <if test="JobNumber != null">
+            #{JobNumber,jdbcType=VARCHAR},
+        </if>
+        <if test="fileNumber != null">
+            #{fileNumber,jdbcType=VARCHAR}
+        </if>
+        <if test="creatTime != null">
+            #{creatTime,jdbcType=VARCHAR}
+        </if>
+    </trim>
+    </insert>
+
+
+
+    <!--<update id="updateByPrimaryKeySelective" parameterType="com.vision.student.bean.User" >
+        update texttable
+        <set >
+            <if test="name != null" >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null" >
+                age = #{age,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.vision.student.bean.User" >
+    update texttable
+    set name = #{name,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER} useGeneratedKeys="true" keyProperty="id"
+  </update>-->
+
+   <!-- =============================================================================================-->
+    <insert id="baseInsert"   parameterType="com.vision.student.bean.CommonMessage"  >
+        insert into commonMessage(studentName,phone,Gender,parentPhone,dateBirth,heigh,weight,province,city,county,school,bu,grade,classd,rowRow,
+                findPoorTime,workTime,sleepTime,watchTvTime,computerTime,physicalExercise,partialEclipse,inheritance,eyeInjury,prematureDelivery,
+                checkTime,checkDoctor,checkDoctorPhone,leftVisionType,leftNakedEye,leftdaijingEye,leftSanTongYanGuangQiu,leftSanTongYanGuangZhu,
+                leftSanTongYanGuangZhou,leftZhuJueYanGuangQiu,leftZhuJueYanGuangZhu,leftZhuJueYanGuangZhou,leftYanBuCheckJie,leftYanBuCheckJiao,
+                leftEyeCheckDi,leftEyeCheckXian,leftEyeCheckYin,leftEyeCheckOther,rightVisionType,rightNakedEye,rightdaijingEye,rightSanTongYanGuangQiu,
+                rightSanTongYanGuangZhu,rightSanTongYanGuangZhou,rightZhuJueYanGuangQiu,rightZhuJueYanGuangZhu,rightZhuJueYanGuangZhou,
+                rightYanBuCheckJie,rightYanBuCheckJiao,rightEyeCheckDi,rightEyeCheckXian,rightEyeCheckYin,rightEyeCheckOther,creatTime
+                )
+             values(#{studentName},#{phone},#{Gender},#{parentPhone},#{dateBirth},#{heigh},#{weight},#{province},#{city},#{county},#{school},#{bu}
+             ,#{grade},#{classd},#{rowRow},#{findPoorTime},#{workTime},#{sleepTime},#{watchTvTime},#{computerTime}
+             ,#{physicalExercise},#{partialEclipse},#{inheritance},#{eyeInjury},#{prematureDelivery},
+             #{checkTime},#{checkDoctor},#{checkDoctorPhone},#{leftVisionType},#{leftNakedEye},#{leftdaijingEye},
+             #{leftSanTongYanGuangQiu},#{leftSanTongYanGuangZhu},#{leftSanTongYanGuangZhou},#{leftZhuJueYanGuangQiu},#{leftZhuJueYanGuangZhu},#{leftZhuJueYanGuangZhou}
+             ,#{leftYanBuCheckJie},#{leftYanBuCheckJiao},#{leftEyeCheckDi},#{leftEyeCheckXian},#{leftEyeCheckYin},
+             #{leftEyeCheckOther},#{rightVisionType},#{rightNakedEye},#{rightdaijingEye}
+             ,#{rightSanTongYanGuangQiu},#{rightSanTongYanGuangZhu},#{rightSanTongYanGuangZhou},#{rightZhuJueYanGuangQiu},#{rightZhuJueYanGuangZhu},
+             #{rightZhuJueYanGuangZhou},#{rightYanBuCheckJie},#{rightYanBuCheckJiao},#{rightEyeCheckDi},#{rightEyeCheckXian},#{rightEyeCheckYin},#{rightEyeCheckOther},#{creatTime}
+             )
+    </insert>
+
+    <update id="baseUpdate" parameterType="com.vision.student.bean.CommonMessage" >
+        update commonMessage set
+        studentName=#{studentName},Gender=#{Gender},phone=#{phone},parentPhone=#{parentPhone},
+        dateBirth=#{dateBirth},heigh=#{heigh},weight=#{weight},
+        province=#{province},city=#{city},county=#{county},
+        school=#{school},bu=#{bu},grade=#{grade},
+        classd=#{classd},rowRow=#{rowRow},
+        findPoorTime=#{findPoorTime},workTime=#{workTime},sleepTime=#{sleepTime},
+        watchTvTime=#{watchTvTime},computerTime=#{computerTime},physicalExercise=#{physicalExercise},
+        partialEclipse=#{partialEclipse},inheritance=#{inheritance},eyeInjury=#{eyeInjury},
+        prematureDelivery=#{prematureDelivery},
+
+        checkTime=#{checkTime},checkDoctor=#{checkDoctor},checkDoctorPhone=#{checkDoctorPhone},leftVisionType=#{leftVisionType},
+        leftNakedEye=#{leftNakedEye},leftdaijingEye=#{leftdaijingEye},leftSanTongYanGuangQiu=#{leftSanTongYanGuangQiu},
+        leftSanTongYanGuangZhu=#{leftSanTongYanGuangZhu},leftSanTongYanGuangZhou=#{leftSanTongYanGuangZhou},leftZhuJueYanGuangQiu=#{leftZhuJueYanGuangQiu},
+        leftZhuJueYanGuangZhu=#{leftZhuJueYanGuangZhu},leftZhuJueYanGuangZhou=#{leftZhuJueYanGuangZhou},leftYanBuCheckJie=#{leftYanBuCheckJie},
+        leftYanBuCheckJiao=#{leftYanBuCheckJiao},leftEyeCheckDi=#{leftEyeCheckDi},rightVisionType=#{rightVisionType},
+        leftEyeCheckYin=#{leftEyeCheckYin},leftEyeCheckOther=#{leftEyeCheckOther},sleepTime=#{sleepTime},
+        rightNakedEye=#{rightNakedEye},rightdaijingEye=#{rightdaijingEye},rightSanTongYanGuangQiu=#{rightSanTongYanGuangQiu},
+        rightSanTongYanGuangZhu=#{rightSanTongYanGuangZhu},rightSanTongYanGuangZhou=#{rightSanTongYanGuangZhou},rightZhuJueYanGuangQiu=#{rightZhuJueYanGuangQiu},
+        rightZhuJueYanGuangZhu=#{rightZhuJueYanGuangZhu},rightZhuJueYanGuangZhou=#{rightZhuJueYanGuangZhou},
+        rightYanBuCheckJie=#{rightYanBuCheckJie},rightYanBuCheckJiao=#{rightYanBuCheckJiao},
+        rightEyeCheckDi=#{rightEyeCheckDi},rightEyeCheckXian=#{rightEyeCheckXian},
+        rightEyeCheckYin=#{rightEyeCheckYin},rightEyeCheckOther=#{rightEyeCheckOther},updateTime=#{updateTime}
+        where 1=1
+        <if test="phone != null" >
+            and phone = #{phone,jdbcType=VARCHAR}
+        </if>
+    </update>
+
+    <!--<insert id="checkInsert" parameterType="com.vision.student.bean.CheckInformation" useGeneratedKeys="true" keyProperty="id">
+        insert into user(checkTime,checkDoctor,checkDoctorPhone,leftVisionType,leftNakedEye,leftdaijingEye,leftSanTongYanGuangQiu,leftSanTongYanGuangZhu,leftSanTongYanGuangZhou,leftZhuJueYanGuangQiu,leftZhuJueYanGuangZhu,leftZhuJueYanGuangZhou,leftYanBuCheckJie,leftYanBuCheckJiao,leftEyeCheckDi,
+                leftEyeCheckXian,leftEyeCheckYin,leftEyeCheckOther,rightVisionType,rightNakedEye,rightdaijingEye,rightSanTongYanGuangQiu,rightSanTongYanGuangZhu,rightSanTongYanGuangZhou,rightZhuJueYanGuangQiu,rightZhuJueYanGuangZhu,rightZhuJueYanGuangZhou,
+                ,rightYanBuCheckJie,rightYanBuCheckJiao,rightEyeCheckDi,rightEyeCheckXian,rightEyeCheckYin,rightEyeCheckOther
+                )
+             values(#{checkTime},#{checkDoctor},#{checkDoctorPhone},#{leftVisionType},#{leftNakedEye},#{leftdaijingEye},#{leftSanTongYanGuangQiu},#{leftSanTongYanGuangZhu},#{leftSanTongYanGuangZhou},#{leftZhuJueYanGuangQiu},#{leftZhuJueYanGuangZhu},#{leftZhuJueYanGuangZhou}
+             ,#{leftYanBuCheckJie},#{leftYanBuCheckJiao},#{leftEyeCheckDi},#{leftEyeCheckXian},#{leftEyeCheckYin},#{leftEyeCheckOther},#{rightVisionType},#{rightNakedEye},#{rightdaijingEye}
+             ,#{rightSanTongYanGuangQiu},#{rightSanTongYanGuangZhu},#{rightSanTongYanGuangZhou},#{rightZhuJueYanGuangQiu},#{rightZhuJueYanGuangZhu},#{rightZhuJueYanGuangZhou},#{rightYanBuCheckJie}
+             ,#{rightYanBuCheckJiao},#{rightEyeCheckDi},#{rightEyeCheckXian},#{rightEyeCheckYin},#{rightEyeCheckOther})
+    </insert>
+
+    <update id="checkUpdate" parameterType="com.vision.student.bean.CheckInformation" >
+        update user set
+        checkTime=#{checkTime},checkDoctor=#{checkDoctor},checkDoctorPhone=#{checkDoctorPhone},leftVisionType=#{leftVisionType},
+        leftNakedEye=#{leftNakedEye},leftdaijingEye=#{leftdaijingEye},leftSanTongYanGuangQiu=#{leftSanTongYanGuangQiu},
+        leftSanTongYanGuangZhu=#{leftSanTongYanGuangZhu},leftSanTongYanGuangZhou=#{leftSanTongYanGuangZhou},leftZhuJueYanGuangQiu=#{leftZhuJueYanGuangQiu},
+        leftZhuJueYanGuangZhu=#{leftZhuJueYanGuangZhu},leftZhuJueYanGuangZhou=#{leftZhuJueYanGuangZhou},leftYanBuCheckJie=#{leftYanBuCheckJie},
+        leftYanBuCheckJiao=#{leftYanBuCheckJiao},leftEyeCheckDi=#{leftEyeCheckDi},rightVisionType=#{rightVisionType},
+        leftEyeCheckYin=#{leftEyeCheckYin},leftEyeCheckOther=#{leftEyeCheckOther},sleepTime=#{sleepTime},
+        rightNakedEye=#{rightNakedEye},rightdaijingEye=#{rightdaijingEye},rightSanTongYanGuangQiu=#{rightSanTongYanGuangQiu},
+        rightSanTongYanGuangZhu=#{rightSanTongYanGuangZhu},rightSanTongYanGuangZhou=#{rightSanTongYanGuangZhou},rightZhuJueYanGuangQiu=#{rightZhuJueYanGuangQiu},
+        rightZhuJueYanGuangZhu=#{rightZhuJueYanGuangZhu},rightZhuJueYanGuangZhou=#{rightZhuJueYanGuangZhou},
+        rightYanBuCheckJie=#{rightYanBuCheckJie},rightYanBuCheckJiao=#{rightYanBuCheckJiao},
+        rightEyeCheckDi=#{rightEyeCheckDi},rightEyeCheckXian=#{rightEyeCheckXian},
+        rightEyeCheckYin=#{rightEyeCheckYin},rightEyeCheckOther=#{rightEyeCheckOther}
+
+        where id=#{id}
+        <if test="phone != null" >
+            and phone = #{phone,jdbcType=VARCHAR}
+        </if>
+    </update>-->
+
+    <select id="selectDoctor" parameterType="java.util.Map" resultType="com.vision.student.bean.CommonMessage">
+         select * from commonMessage
+         where 1=1
+        <if test="phone != null and phone != ''" >
+            and phone = #{phone,jdbcType=VARCHAR}
+        </if>
+        <if test="school != null and school != ''" >
+            and school = #{school,jdbcType=VARCHAR}
+        </if>
+        <if test="grade != null and grade != ''" >
+            and grade = #{grade,jdbcType=VARCHAR}
+        </if>
+        <if test="classd != null and classd != ''" >
+            and classd = #{classd,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="selectStudent" parameterType="java.lang.String" resultType="com.vision.student.bean.CommonMessage">
+        select * from commonMessage
+        where 1=1
+
+            and phone = #{phone,jdbcType=VARCHAR}
+
+    </select>
+
+    <delete id="deleteUserName" parameterType="java.lang.String" >
+    delete from user
+    where userName = #{userName,jdbcType=VARCHAR}
+   </delete>
+
+    <select id="selectListUser" resultType="com.vision.student.bean.User" >
+        select * from user
+    </select>
+    <update id="updateFlag" parameterType="java.lang.String" >
+        update user  set flag='0'
+        where userName = #{userName,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updatePassWord" parameterType="com.vision.student.bean.User" >
+        update user  set passWord=#{passWord},updateTime=#{updateTime}
+        where userName = #{userName,jdbcType=VARCHAR}
+    </update>
+</mapper>

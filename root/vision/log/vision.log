@@ -1,0 +1,261 @@
+2019-04-30 13:53:06,240 INFO (StartupInfoLogger.java:50)- Starting VisionApplication on XYKJ100042 with PID 17532 (D:\vision\target\classes started by shuaidi_liu in D:\vision)
+2019-04-30 13:53:06,246 INFO (SpringApplication.java:675)- No active profile set, falling back to default profiles: default
+2019-04-30 13:53:07,479 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$2ed0483e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-30 13:53:07,766 INFO (TomcatWebServer.java:90)- Tomcat initialized with port(s): 8088 (http)
+2019-04-30 13:53:07,777 INFO (DirectJDKLog.java:173)- Initializing ProtocolHandler ["http-nio-8088"]
+2019-04-30 13:53:07,782 INFO (DirectJDKLog.java:173)- Starting service [Tomcat]
+2019-04-30 13:53:07,782 INFO (DirectJDKLog.java:173)- Starting Servlet Engine: Apache Tomcat/9.0.12
+2019-04-30 13:53:07,788 INFO (DirectJDKLog.java:173)- The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\java\jdk\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;D:\java\jdk\bin;D:\java\jdk\jre\bin;D:\maven\apache-maven-3.6.0\bin;C:\Users\shuaidi_liu\AppData\Local\Microsoft\WindowsApps;c:\program files\esafenet\cobra docguard client;D:\Fiddler;C:\Users\shuaidi_liu\AppData\Local\BypassRuntm;.]
+2019-04-30 13:53:07,915 INFO (DirectJDKLog.java:173)- Initializing Spring embedded WebApplicationContext
+2019-04-30 13:53:07,915 INFO (ServletWebServerApplicationContext.java:285)- Root WebApplicationContext: initialization completed in 1553 ms
+2019-04-30 13:53:07,942 INFO (ServletRegistrationBean.java:186)- Servlet dispatcherServlet mapped to [/]
+2019-04-30 13:53:07,958 INFO (AbstractFilterRegistrationBean.java:248)- Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-04-30 13:53:07,959 INFO (AbstractFilterRegistrationBean.java:248)- Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-04-30 13:53:07,959 INFO (AbstractFilterRegistrationBean.java:248)- Mapping filter: 'formContentFilter' to: [/*]
+2019-04-30 13:53:07,959 INFO (AbstractFilterRegistrationBean.java:248)- Mapping filter: 'requestContextFilter' to: [/*]
+2019-04-30 13:53:08,518 INFO (PropertySourcedRequestMappingHandlerMapping.java:69)- Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-04-30 13:53:08,632 INFO (ExecutorConfigurationSupport.java:171)- Initializing ExecutorService 'applicationTaskExecutor'
+2019-04-30 13:53:08,834 INFO (DocumentationPluginsBootstrapper.java:147)- Context refreshed
+2019-04-30 13:53:08,850 INFO (DocumentationPluginsBootstrapper.java:150)- Found 1 custom documentation plugin(s)
+2019-04-30 13:53:08,885 INFO (ApiListingReferenceScanner.java:41)- Scanning for api listing references
+2019-04-30 13:53:09,136 INFO (DirectJDKLog.java:173)- Starting ProtocolHandler ["http-nio-8088"]
+2019-04-30 13:53:09,169 INFO (DirectJDKLog.java:173)- Using a shared selector for servlet write/read
+2019-04-30 13:53:09,209 INFO (TomcatWebServer.java:204)- Tomcat started on port(s): 8088 (http) with context path ''
+2019-04-30 13:53:09,213 INFO (StartupInfoLogger.java:59)- Started VisionApplication in 3.681 seconds (JVM running for 4.96)
+2019-04-30 13:57:16,109 INFO (DirectJDKLog.java:173)- Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-04-30 13:57:16,109 INFO (FrameworkServlet.java:521)- Initializing Servlet 'dispatcherServlet'
+2019-04-30 13:57:16,117 INFO (FrameworkServlet.java:543)- Completed initialization in 8 ms
+2019-04-30 13:57:29,089 INFO (LoginController.java:45)- 注册获取到的参数为:User{id=null, userName='14725899989898', passWord='123456', status=2, flag=null, remake='null', JobNumber='null', tokenId='', fileNumber='null', creatTime='null', updateTime='null'}
+2019-04-30 13:57:36,572 INFO (LoginController.java:45)- 注册获取到的参数为:User{id=null, userName='14725899989898', passWord='123456', status=2, flag=null, remake='null', JobNumber='null', tokenId='123456', fileNumber='null', creatTime='null', updateTime='null'}
+2019-04-30 13:57:36,589 INFO (HikariDataSource.java:110)- vision - Starting...
+2019-04-30 13:57:37,696 ERROR (HikariPool.java:574)- vision - Exception during pool initialization.
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:835)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:455)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:240)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:207)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:136)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:369)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:198)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:467)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:541)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:151)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:115)
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:78)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:82)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:68)
+	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:338)
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:84)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:62)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:326)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:83)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:148)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:141)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433)
+	at com.sun.proxy.$Proxy73.selectOne(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:166)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:83)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:59)
+	at com.sun.proxy.$Proxy74.selectTokenId(Unknown Source)
+	at com.vision.student.service.UserServiceImpl.insertSelective(UserServiceImpl.java:44)
+	at com.vision.student.action.LoginController.register(LoginController.java:46)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:215)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:142)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:998)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:901)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:875)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:770)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-04-30 13:57:37,712 ERROR (DirectJDKLog.java:175)- Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+### The error may exist in class path resource [mapping/UserMapper.xml]
+### The error may involve com.vision.student.dao.UserMapper.selectTokenId
+### The error occurred while executing a query
+### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)] with root cause
+java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:835)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:455)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:240)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:207)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:136)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:369)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:198)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:467)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:541)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:151)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:115)
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:78)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:82)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:68)
+	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:338)
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:84)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:62)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:326)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:83)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:148)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:141)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433)
+	at com.sun.proxy.$Proxy73.selectOne(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:166)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:83)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:59)
+	at com.sun.proxy.$Proxy74.selectTokenId(Unknown Source)
+	at com.vision.student.service.UserServiceImpl.insertSelective(UserServiceImpl.java:44)
+	at com.vision.student.action.LoginController.register(LoginController.java:46)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:215)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:142)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:998)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:901)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:875)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:770)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-04-30 14:00:04,537 INFO (StartupInfoLogger.java:50)- Starting VisionApplication on XYKJ100042 with PID 11716 (D:\vision\target\classes started by shuaidi_liu in D:\vision)
+2019-04-30 14:00:04,544 INFO (SpringApplication.java:675)- No active profile set, falling back to default profiles: default
+2019-04-30 14:00:05,744 INFO (PostProcessorRegistrationDelegate.java:330)- Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$65c2a3cf] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-30 14:00:06,011 INFO (TomcatWebServer.java:90)- Tomcat initialized with port(s): 8088 (http)
+2019-04-30 14:00:06,022 INFO (DirectJDKLog.java:173)- Initializing ProtocolHandler ["http-nio-8088"]
+2019-04-30 14:00:06,027 INFO (DirectJDKLog.java:173)- Starting service [Tomcat]
+2019-04-30 14:00:06,027 INFO (DirectJDKLog.java:173)- Starting Servlet Engine: Apache Tomcat/9.0.12
+2019-04-30 14:00:06,033 INFO (DirectJDKLog.java:173)- The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\java\jdk\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;D:\java\jdk\bin;D:\java\jdk\jre\bin;D:\maven\apache-maven-3.6.0\bin;C:\Users\shuaidi_liu\AppData\Local\Microsoft\WindowsApps;c:\program files\esafenet\cobra docguard client;D:\Fiddler;C:\Users\shuaidi_liu\AppData\Local\BypassRuntm;.]
+2019-04-30 14:00:06,157 INFO (DirectJDKLog.java:173)- Initializing Spring embedded WebApplicationContext
+2019-04-30 14:00:06,158 INFO (ServletWebServerApplicationContext.java:285)- Root WebApplicationContext: initialization completed in 1436 ms
+2019-04-30 14:00:06,184 INFO (ServletRegistrationBean.java:186)- Servlet dispatcherServlet mapped to [/]
+2019-04-30 14:00:06,189 INFO (AbstractFilterRegistrationBean.java:248)- Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-04-30 14:00:06,189 INFO (AbstractFilterRegistrationBean.java:248)- Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-04-30 14:00:06,190 INFO (AbstractFilterRegistrationBean.java:248)- Mapping filter: 'formContentFilter' to: [/*]
+2019-04-30 14:00:06,190 INFO (AbstractFilterRegistrationBean.java:248)- Mapping filter: 'requestContextFilter' to: [/*]
+2019-04-30 14:00:06,771 INFO (PropertySourcedRequestMappingHandlerMapping.java:69)- Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-04-30 14:00:06,876 INFO (ExecutorConfigurationSupport.java:171)- Initializing ExecutorService 'applicationTaskExecutor'
+2019-04-30 14:00:07,065 INFO (DocumentationPluginsBootstrapper.java:147)- Context refreshed
+2019-04-30 14:00:07,079 INFO (DocumentationPluginsBootstrapper.java:150)- Found 1 custom documentation plugin(s)
+2019-04-30 14:00:07,113 INFO (ApiListingReferenceScanner.java:41)- Scanning for api listing references
+2019-04-30 14:00:07,333 INFO (DirectJDKLog.java:173)- Starting ProtocolHandler ["http-nio-8088"]
+2019-04-30 14:00:07,364 INFO (DirectJDKLog.java:173)- Using a shared selector for servlet write/read
+2019-04-30 14:00:07,401 INFO (TomcatWebServer.java:204)- Tomcat started on port(s): 8088 (http) with context path ''
+2019-04-30 14:00:07,404 INFO (StartupInfoLogger.java:59)- Started VisionApplication in 3.598 seconds (JVM running for 4.86)
+2019-04-30 14:01:22,463 INFO (DirectJDKLog.java:173)- Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-04-30 14:01:22,463 INFO (FrameworkServlet.java:521)- Initializing Servlet 'dispatcherServlet'
+2019-04-30 14:01:22,470 INFO (FrameworkServlet.java:543)- Completed initialization in 7 ms
+2019-04-30 14:01:33,190 INFO (LoginController.java:45)- 注册获取到的参数为:User{id=null, userName='14725899989898', passWord='123456', status=23223, flag=null, remake='null', JobNumber='null', tokenId='232323', fileNumber='null', creatTime='null', updateTime='null'}
+2019-04-30 14:01:33,212 INFO (HikariDataSource.java:110)- vision - Starting...
+2019-04-30 14:01:33,401 INFO (HikariDataSource.java:123)- vision - Start completed.
+2019-04-30 14:01:46,325 INFO (LoginController.java:60)- 修改密码，接收到用户名为14725899989898,接收到密码为123456
+2019-04-30 14:01:55,817 INFO (ConfigController.java:59)- 新增检查信息获取到的参数为:CommonMessage{id='null', studentName='2332', phone='2332', Gender='2332', parentPhone='null', dateBirth='null', heigh='null', weight='null', province='2332', city='null', county='null', school='null', bu='null', grade='null', classd='null', rowRow='null', findPoorTime='null', workTime='null', sleepTime='null', watchTvTime='null', computerTime='null', physicalExercise='null', partialEclipse='null', inheritance='null', eyeInjury='null', prematureDelivery='null', checkTime='232332', checkDoctor='null', checkDoctorPhone='', leftVisionType='null', leftNakedEye='null', leftdaijingEye='null', leftSanTongYanGuangQiu='null', leftSanTongYanGuangZhu='null', leftSanTongYanGuangZhou='null', leftZhuJueYanGuangQiu='null', leftZhuJueYanGuangZhu='null', leftZhuJueYanGuangZhou='null', leftYanBuCheckJie='null', leftYanBuCheckJiao='null', leftEyeCheckDi='null', leftEyeCheckXian='null', leftEyeCheckYin='null', leftEyeCheckOther='null', rightVisionType='null', rightNakedEye='null', rightdaijingEye='null', rightSanTongYanGuangQiu='null', rightSanTongYanGuangZhu='null', rightSanTongYanGuangZhou='null', rightZhuJueYanGuangQiu='null', rightZhuJueYanGuangZhu='null', rightZhuJueYanGuangZhou='null', rightYanBuCheckJie='null', rightYanBuCheckJiao='null', rightEyeCheckDi='null', rightEyeCheckXian='null', rightEyeCheckYin='null', rightEyeCheckOther='null', creatTime='null', updateTime='null'}

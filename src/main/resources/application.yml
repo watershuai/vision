@@ -1,0 +1,30 @@
+server:
+  port: 8088
+
+spring:
+  datasource:
+    name: vision
+    url: jdbc:mysql://127.0.0.1:3306/vision?serverTimezone=GMT%2B8&useSSL=FALSE&com.mysql.jdbc.Driver
+    username: root
+    password: asdf@123456
+    #driver-class-name: com.mysql.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mapping/UserMapper.xml
+  #type-aliases-package: com.example.demo
+
+  spring:
+    thymeleaf:
+      cache: false
+      prefix: classpath:/templates/
+      suffix: .html
+      encoding: UTF-8
+      content-type: text/html
+      mode: HTML5
+    CommonsMultipartResolver:
+      defaultEncoding: utf-8
+      maxUploadSize: 10485760000
+      maxInMemorySize: 40960
+
+logging:
+  config: classpath:logback.xml
