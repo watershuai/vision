@@ -42,6 +42,9 @@ public class ConfigController {
            if (!user.getUserName().equals(commonMessage.getCheckDoctorPhone())){
                return new ResponseBean<String>(203,"不可更新不是本人录入得检查信息");
            }
+           if (StringUtils.isEmpty(commonMessage.getPhone())){
+               return new ResponseBean<String>(201,"学生手机号不可为空");
+           }
            commonMessage.setUpdateTime(RundomUtils.getNowTime());
            userService.baseUpdate(commonMessage);
        }catch (Exception e){
