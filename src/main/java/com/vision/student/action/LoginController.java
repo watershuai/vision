@@ -1,6 +1,8 @@
 package com.vision.student.action;
 
 
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.vision.student.bean.User;
 import com.vision.student.service.UserService;
 import com.vision.student.utils.ResponseBean;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Controller
@@ -65,7 +69,11 @@ public class LoginController {
             User user= userService.findNameAndPsw(username, password);
             if (user != null  && user.getUserName().equals(username)) {
                 request.getSession().setAttribute("user",user);
-                return new ResponseBean<String>(200,"登陆成功");
+                Map<String,String>map=new HashMap<>();
+                map.put("sessionId",request.getSession().getId());
+                map.put("port",String.valueOf(request.getServerPort()));
+                map.put("user", JSONObject.toJSONString(user, SerializerFeature.WriteMapNullValue));
+                return new ResponseBean<String>(200,"登陆成功",JSONObject.toJSONString(map, SerializerFeature.WriteMapNullValue));
             } else {
                 return new ResponseBean<String>(201,"用户名或密码不正确");
             }
@@ -94,7 +102,11 @@ public class LoginController {
                 user.setUserName(userName);
             }
             user.setUpdateTime(RundomUtils.getNowTime());
-            userService.updatePassWord(user);
+            int flag=0;
+            flag=userService.updatePassWord(user);
+            if (flag == 5){
+                return new ResponseBean<String>(201,"该账号不存在");
+            }
             return new ResponseBean<String>(200,"改密成功");
         }catch (Exception e){
             log.info("修改密码出现异常",e);

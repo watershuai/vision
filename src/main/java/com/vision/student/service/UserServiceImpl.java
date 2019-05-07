@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
         }
         User user1=userMapper.findName(user.getUserName());
         if (user1 != null){
-            return new ResponseBean<String>(201,"该账号已被使用");
+            return new ResponseBean<String>(201,"该账号已被使用,不可注册");
         }
         try {
             user.setCreatTime(RundomUtils.getNowTime());
@@ -127,6 +127,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int updatePassWord(User user) {
+        User user1=userMapper.findName(user.getUserName());
+        if (user1 == null){
+            return 5;
+        }
         return userMapper.updatePassWord(user);
     }
 }

@@ -67,12 +67,16 @@ public class ConfigController {
             if (user.getStatus()!=1){
                 return new ResponseBean<String>(203,"用户不是医生不可新增信息");
             }
+            CommonMessage message=userService.selectStudent(commonMessage.getPhone());
+            if (message != null){
+                return new ResponseBean<String>(201,"该学生受检信息已被录入，请勿重复录入");
+            }
             commonMessage.setCheckDoctorPhone(user.getUserName());
             commonMessage.setCreatTime(RundomUtils.getNowTime());
             userService.baseInsert(commonMessage);
             User user1=new User();
             user1.setPassWord("123456");
-            user1.setStatus(0);
+            user1.setStatus(Integer.parseInt("0"));
             user1.setFlag(0);
             user1.setUserName(commonMessage.getPhone());
             user1.setFileNumber(String.valueOf(RundomUtils.rundomSix()));

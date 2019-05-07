@@ -75,13 +75,13 @@
             remake,
         </if>
         <if test="JobNumber != null">
-            JobNumber,
+            jobNumber,
         </if>
         <if test="fileNumber != null">
             fileNumber,
         </if>
         <if test="creatTime != null">
-            creatTime,
+            creatTime
         </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -95,7 +95,7 @@
             #{passWord,jdbcType=VARCHAR},
         </if>
         <if test="status != null">
-            #{status,jdbcType=VARCHAR},
+            #{status,jdbcType=INTEGER},
         </if>
         <if test="flag != null">
             #{flag,jdbcType=INTEGER},
@@ -107,7 +107,7 @@
             #{JobNumber,jdbcType=VARCHAR},
         </if>
         <if test="fileNumber != null">
-            #{fileNumber,jdbcType=VARCHAR}
+            #{fileNumber,jdbcType=VARCHAR},
         </if>
         <if test="creatTime != null">
             #{creatTime,jdbcType=VARCHAR}
