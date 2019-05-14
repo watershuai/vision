@@ -11,15 +11,16 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import javax.servlet.http.HttpServletRequest;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 
+import java.net.URLEncoder;
 import java.util.*;
 
 @Controller
@@ -28,6 +29,8 @@ import java.util.*;
 public class FileController {
     @Autowired
     private UserService userService;
+    private static final String FILE_PATH=File.separator+"root"+File.separator+"vision"+File.separator+"file"+File.separator+"template.xlsx";
+
 
     //批量新增，文件解析
     @RequestMapping("/upload")
@@ -41,7 +44,7 @@ public class FileController {
             }
             Workbook wb = getWorkbookFromRequest(request);
             List<List<Object>> listob = RundomUtils.batchExportJiJin(wb);
-            excelInsert(listob);
+            excelInsert(listob,user.getUserName());
             return new ResponseBean<String>(200,"上传成功");
         }catch (Exception e){
             log.info("文件上传出现异常",e);
@@ -78,7 +81,7 @@ public class FileController {
         return wb;
     }
 
-    private void excelInsert(List<List<Object>> listob){
+    private void excelInsert(List<List<Object>> listob,String userName){
         for (int i = 0; i < listob.size(); i++){
             List<Object> lo = listob.get(i);
             lo.removeIf(Objects::isNull);
@@ -145,8 +148,70 @@ public class FileController {
             common.setRightEyeCheckYin(String.valueOf(lo.get(55)));
             common.setRightEyeCheckOther(String.valueOf(lo.get(56)));
             common.setCreatTime(RundomUtils.getNowTime());
-
+            common.setCheckDoctorPhone(userName);
             userService.baseInsert(common);
+        }
+
+    }
+
+
+    @GetMapping("/exportVehicleInfo")
+    public void exportVehicleInfo(HttpServletRequest req, HttpServletResponse resp) {
+        DataInputStream in = null;
+        OutputStream out = null;
+        try{
+            resp.reset();// 清空输出流
+            log.info("开始下载模板");
+            String resultFileName = "template.xlsx";
+            resultFileName = URLEncoder.encode(resultFileName,"UTF-8");
+            resp.setCharacterEncoding("UTF-8");
+            resp.setHeader("Content-disposition", "attachment; filename=" + resultFileName);// 设定输出文件头
+            resp.setContentType("application/msexcel");// 定义输出类型
+            //String downloadPath="D:/template.xlsx";
+            File file=new File(FILE_PATH);
+            if (!file.exists()){
+                log.info("下载模板，文件为空");
+            }
+            //输入流：本地文件路径
+            in = new DataInputStream(
+                    new FileInputStream(file));
+            //输出流
+            out = resp.getOutputStream();
+            //输出文件
+            int bytes = 0;
+            byte[] bufferOut = new byte[1024];
+            while ((bytes = in.read(bufferOut)) != -1) {
+                out.write(bufferOut, 0, bytes);
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+            resp.reset();
+            log.info("下载模板发生异常1"+e);
+            try {
+
+                OutputStreamWriter writer = new OutputStreamWriter(resp.getOutputStream(), "UTF-8");
+                String data = "<script language='javascript'>alert(\"\\u64cd\\u4f5c\\u5f02\\u5e38\\uff01\");</script>";
+                writer.write(data);
+                writer.close();
+            } catch (IOException e1) {
+                log.info("下载模板发生异常2"+e1);
+                e1.printStackTrace();
+            }
+        }finally {
+            if(null != in) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(null != out) {
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
     }

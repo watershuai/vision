@@ -66,7 +66,7 @@
 </form>
 
 
-<form action="/interest/config/baseInsert" accept-charset="utf-8" method="post">
+<form action="/interest/config/selectDoctor" accept-charset="utf-8" method="post">
     <div>
         <label>手机号</label><input type="text" class="text" id="username3"
                                  placeholder="用户账号" name="phone" >
@@ -105,17 +105,51 @@
 
 </form>
 
+<form action="/interest/config/selectListUser" accept-charset="utf-8" method="post">
+    <div>
+            <label>用户名</label><input type="text" class="text" id="username18"
+                                     placeholder="用户账号" name="userName" required tabindex="1">
+    </div>
 
+    <br>
+
+    <button type="submit" value="提交" id="login19">查询用户账号</button>
+
+    </div>
+</form>
+<br/>
+
+<form action="/interest/user/loginOut" accept-charset="utf-8" method="post">
+    <div>
+            <label>用户名</label><input type="text" class="text" id="username17"
+                                     placeholder="用户账号" name="userName" required tabindex="1">
+    </div>
+
+    <br>
+
+    <button type="submit" value="提交" id="login21">退出登录</button>
+
+    </div>
+</form>
+<br/>
+<form action="/interest/file/exportVehicleInfo" accept-charset="utf-8" >
+
+
+
+
+    <button type="submit" value="提交" id="login22">下载模板</button>
+
+    </div>
+</form>
+
+erwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
 =======================================================================
 <form action="/interest/file/upload" id="batchAddInfo" method="post" enctype="multipart/form-data">
     <div style="width:95%;height:250px;">
         <fieldset>
-            <legend style="margin-bottom:10px;"><font color="red">批量新增</font></legend>
             <table>
                 <tr><td><span>文件导入</span></td></tr>
                 <tr><td><input id="importFile" name="importFile" type="file" style="width:200px;"/></td></tr>
-                <tr><td><a href="javascript:void(0)" class="easyui-linkbutton" style="width:100px;" onclick="fileUpload()" iconCls="icon-reload">导入</a></td></tr>
-                <tr><td><a href="javascript:void(0)" class="easyui-linkbutton" style="width:100px;" onclick="downloadFile()" iconCls="icon-print">模板下载</a></td></tr>
             </table>
         </fieldset>
     </div>

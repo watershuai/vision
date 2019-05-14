@@ -222,7 +222,7 @@
 
     <select id="selectDoctor" parameterType="java.util.Map" resultType="com.vision.student.bean.CommonMessage">
          select * from commonMessage
-         where 1=1
+         where  checkDoctorPhone = #{checkDoctorPhone,jdbcType=VARCHAR}
         <if test="phone != null and phone != ''" >
             and phone = #{phone,jdbcType=VARCHAR}
         </if>
@@ -249,8 +249,8 @@
     where userName = #{userName,jdbcType=VARCHAR}
    </delete>
 
-    <select id="selectListUser" resultType="com.vision.student.bean.User" >
-        select * from user
+    <select id="selectListUser" parameterType="java.lang.Integer" resultType="com.vision.student.bean.User"  >
+        select * from user where status = #{status,jdbcType=INTEGER}
     </select>
     <update id="updateFlag" parameterType="java.lang.String" >
         update user  set flag='0'

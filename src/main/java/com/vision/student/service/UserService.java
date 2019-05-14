@@ -40,7 +40,7 @@ public interface UserService {
      * */
     String deleteUserName(String userName);
 
-    List<User>  selectListUser();
+    List<User>  selectListUser(int status);
 
     int updateFlag(String userName);
 

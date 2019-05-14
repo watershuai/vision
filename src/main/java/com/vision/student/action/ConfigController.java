@@ -128,6 +128,7 @@ public class ConfigController {
             map.put("school",request.getParameter("school"));
             map.put("grade",request.getParameter("grade"));
             map.put("classd",request.getParameter("classd"));
+            map.put("checkDoctorPhone",user.getUserName());
             List<CommonMessage>list=userService.selectDoctor(map);
             if (list != null){
                 return new ResponseBean<String>(200,"查询成功",JSONObject.toJSONString(list, SerializerFeature.WriteMapNullValue));
@@ -192,20 +193,25 @@ public class ConfigController {
     @PostMapping("/selectListUser")
     @ResponseBody
     @ApiOperation(value = "查询用户账号信息")
+    @ApiImplicitParam(name = "status", value = "查询的用户类型", required = true, dataType = "String")
     public ResponseBean<String> selectListUser(HttpServletRequest request){
         try {
             User user=(User)request.getSession().getAttribute("user");
             if (user == null){
                 return new ResponseBean<String>(201,"请先登录");
             }
-            /*if (2 != user.getStatus()){
-                return new ResponseBean<String>(201,"该用户不是管理员不得查询用户账号信息");
-            }*/
-            List<User>users=userService.selectListUser();
+            if (0 == user.getStatus()){
+                return new ResponseBean<String>(201,"该用户是学生不得查询用户账号信息");
+            }
+            int status=0;
+            if (user.getStatus() == 2){
+                status=1;
+            }
+            List<User>users=userService.selectListUser(status);
             if (users != null){
                 return new ResponseBean<String>(200,"查询用户信息成功",JSONObject.toJSONString(users,SerializerFeature.WriteMapNullValue));
             }else {
-                return new ResponseBean<String>(200,"查询用户信息为空");
+                return new ResponseBean<String>(201,"查询用户信息为空");
             }
         }catch (Exception e){
             log.info("查询用户账号信息出现异常",e);
@@ -224,7 +230,7 @@ public class ConfigController {
                 return new ResponseBean<String>(201,"请先登录");
             }
             if (2 != user.getStatus()) {
-                return new ResponseBean<String>(201, "该用户不是管理员不得查询用户账号信息");
+                return new ResponseBean<String>(201, "该用户不是管理员不得更新审核状态");
             }
             String userName=request.getParameter("userName");
             if (StringUtils.isEmpty(userName)){

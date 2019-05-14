@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -111,6 +112,19 @@ public class LoginController {
         }catch (Exception e){
             log.info("修改密码出现异常",e);
             return new ResponseBean<String>(203,"改密出现异常");
+        }
+    }
+    @PostMapping("/loginOut")
+    @ResponseBody
+    @ApiOperation(value = "退出登陆入口")
+    public ResponseBean<String> loginOut(HttpServletRequest request){
+        HttpSession session=request.getSession();
+        session.removeAttribute("user");
+        Object userInfo=session.getAttribute("user");
+        if (userInfo == null){
+            return new ResponseBean<String>(200,"退出登陆成功");
+        }else {
+            return new ResponseBean<String>(201,"退出登陆失败");
         }
     }
 
