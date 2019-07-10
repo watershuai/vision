@@ -46,5 +46,6 @@ public interface UserService {
 
     int updatePassWord(User user);
 
+    int testStatic();
 
 }

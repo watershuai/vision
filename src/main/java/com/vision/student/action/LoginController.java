@@ -7,6 +7,7 @@ import com.vision.student.bean.User;
 import com.vision.student.service.UserService;
 import com.vision.student.utils.ResponseBean;
 import com.vision.student.utils.RundomUtils;
+import com.vision.student.utils.TimeHeple;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -29,6 +30,7 @@ import java.util.Map;
 public class LoginController {
     @Autowired
     private UserService userService;
+    private  String  token="22";
     @PostMapping("/register")
     @ResponseBody
     @ApiOperation(value = "注册入口")
@@ -131,6 +133,20 @@ public class LoginController {
     @RequestMapping("/login")
     public String login(){
         return "login";
+    }
+    @PostMapping("/testStatic")
+    @ResponseBody
+    public int testStatic(){
+        TimeHeple timeHeple=new TimeHeple();
+        int s1=timeHeple.testStatic();
+        return s1;
+    }
+
+    @PostMapping("/testStatic2")
+    @ResponseBody
+    public String testStatic2(){
+
+        return String.valueOf(token);
     }
 
 }

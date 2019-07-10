@@ -19,6 +19,7 @@ public class UserServiceImpl implements UserService {
 
     @Resource
     public UserMapper userMapper;
+    private int token=2;
 
     @Override
     public User select(int id) {
@@ -132,6 +133,14 @@ public class UserServiceImpl implements UserService {
             return 5;
         }
         return userMapper.updatePassWord(user);
+    }
+
+    @Override
+    public int testStatic() {
+        int  ss=3;
+        token=token+ss;
+
+        return token;
     }
 }
 
